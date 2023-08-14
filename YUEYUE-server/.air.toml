@@ -1,0 +1,20 @@
+# .air.toml
+
+# 设置要监视的目录
+dirs = ["."]
+
+# 要忽略的文件
+exclude_dir = ["node_modules", "vendor"]
+
+# 要监视的文件扩展名
+include_ext = ["go", "tpl", "tmpl", "html"]
+
+# 命令，用于启动应用程序（这里是 go run）
+command = "go run main.go"
+
+# 自动清除控制台输出
+log_output = true
+
+[misc]
+# 退出时删除tmp目录
+clean_on_exit = true
