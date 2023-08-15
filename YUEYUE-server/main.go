@@ -1,12 +1,14 @@
 package main
 
 import (
+	"YUEYUE/mysql"
 	"YUEYUE/router"
-	"fmt"
 )
 
+func init() {
+	mysql.ConnectDB()
+}
 func main() {
-	fmt.Print("123")
 	router := router.SetRouter()
-	router.Run()
+	router.Run(":80")
 }

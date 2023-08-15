@@ -1,14 +1,16 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import {LinkBack} from "../../components/route.jsx";
 
-const Home = () => {
-    const a = 1;
+const NotFound = () => {
     return (
         <>
-            { a }
-            home
+            <div>
+                404NotFound
+            </div>
+            <LinkBack/>
         </>
     );
 };
 
-export default Home;
+export default NotFound;

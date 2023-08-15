@@ -1,2 +1,2 @@
-# Vue 3 + Vite
+# React + Vite
 

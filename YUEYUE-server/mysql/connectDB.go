@@ -1,7 +1,6 @@
-package init
+package mysql
 
 import (
-	"github.com/joho/godotenv"
 	"gorm.io/gorm"
 	"log"
 )
@@ -11,10 +10,8 @@ var DB *gorm.DB
 
 func ConnectDB() {
 	//  数据库连接
-	_ = godotenv.Load()
-
 	// 账号：密码@tcp(ip:端口)/数据库?连接配置信息
-	dsn := "user:root@tcp(8.130.67.219:3306)/yueyue?charset=utf8"
+	dsn := "user:root@tcp(8.130.67.219:3306)/yueyue?charset=utf8mb4"
 
 	var err error
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
