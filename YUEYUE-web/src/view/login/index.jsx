@@ -44,13 +44,14 @@ const Styled = styled.div`
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  padding: 5vh;
   display: flex;
   align-items: center;
   
     .loginContent{
       height: auto;  //窗口高度
-      position: absolute;
-      right: 7%;
+      margin-left: auto;
+      @media (max-width: 800px) { margin:auto }
       
       .loginBox{
         background: rgba(255,255,255,1);
