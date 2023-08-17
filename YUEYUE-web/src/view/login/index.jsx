@@ -48,16 +48,15 @@ const Styled = styled.div`
   align-items: center;
   
     .loginContent{
-      width: 500px;
+      height: auto;  //窗口高度
       position: absolute;
       right: 7%;
       
       .loginBox{
         background: rgba(255,255,255,1);
-       
-        height: 60vh;
+        height: 100%;
         border-radius: 25px;
-        padding: 25px 60px;
+        padding: 20px 60px;
 
         .title{
           margin-top: 50px;

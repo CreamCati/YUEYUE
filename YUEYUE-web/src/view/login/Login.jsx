@@ -9,7 +9,7 @@ import {getToken, saveToken} from "../../utils/token.js";
 
 const Login = () => {
     const nav = useNavigate();
-    const token = getToken()
+    const {token} = getToken()
 
     useEffect(() => {
         if (token !== null) {
@@ -25,7 +25,7 @@ const Login = () => {
             const response = await post('/login', values);
             // 在这里处理成功后的逻辑
             if(response.code === '200'){
-                saveToken(response.token)
+                saveToken(response.token,values.username)
                 msg("ok","success")
                 nav('/')
             }else{
@@ -47,17 +47,12 @@ const Login = () => {
                 labelCol={{
                     span: 4,
                 }}
-
             >
                 <Form.Item
-                    style={{marginTop:'40px'}}
+                    style={{marginTop:'30px'}}
+                    className='ant-col'
                     label="用户名"
                     name="username"
-                    rules={[
-                        {
-                            message: 'Please input your username!',
-                        },
-                    ]}
                 >
                     <Input />
                 </Form.Item>
@@ -65,11 +60,6 @@ const Login = () => {
                 <Form.Item
                     label="密码"
                     name="password"
-                    rules={[
-                        {
-                            message: 'Please input your password!',
-                        },
-                    ]}
                 >
                     <Input.Password />
                 </Form.Item>
@@ -106,5 +96,6 @@ const Styled = styled.div`
       text-align: center;
       margin-top: 35px;
     }
+ 
 `
 export default Login;

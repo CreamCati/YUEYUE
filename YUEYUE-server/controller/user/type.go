@@ -7,3 +7,8 @@ type User struct {
 	Email    string
 	Type     string
 }
+
+type Token struct {
+	Token    string
+	Username string
+}

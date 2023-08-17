@@ -1,16 +1,14 @@
-import styles from "./Header.module.less";
+import styled from "styled-components";
 
 const Header = () => {
     return (
-        <>
-            <div className={styles.a}>
-                aaa
-                <div className={styles.b}>
-                    bbb
-                </div>
-            </div>
-        </>
+        <Styled>
+111
+        </Styled>
     );
 };
 
+const Styled = styled.div`
+   
+`
 export default Header;

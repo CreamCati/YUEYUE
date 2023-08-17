@@ -55,19 +55,41 @@ func GetToken(Key string) string {
 	return tokenString
 }
 
-func checkToken(tokenString string) string {
-	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+func CheckToken(context *gin.Context) {
+	var body Token
+	err := context.Bind(&body)
+	if err != nil {
+		context.JSON(http.StatusOK, gin.H{
+			"code":  "204",
+			"error": "服务器数据获取失败",
+		})
+	}
+	token, err := jwt.Parse(body.Token, func(token *jwt.Token) (interface{}, error) {
 		return secretKey, nil
 	})
 
 	if err != nil {
-		return err.Error()
+		context.JSON(http.StatusOK, gin.H{
+			"code":  "204",
+			"error": "服务器token转换失败" + body.Token,
+		})
 	}
 
 	claims := token.Claims.(jwt.MapClaims)
 	userName := claims["sub"].(string)
-
-	return userName
+	if userName == body.Username {
+		context.JSON(http.StatusOK, gin.H{
+			"code":    "200",
+			"msg":     "token验证成功",
+			"isValid": true,
+		})
+	} else {
+		context.JSON(http.StatusOK, gin.H{
+			"code":    "200",
+			"msg":     "token验证失败",
+			"isValid": false,
+		})
+	}
 }
 func Reg(context *gin.Context) {
 	var body User

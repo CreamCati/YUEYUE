@@ -52,12 +52,12 @@ const Reg = () => {
                 onFinish={onFinish}
                 autoComplete="off"
                 labelCol={{
-                    span: 4,
+                    span: 6,
                 }}
 
             >
                 <Form.Item
-                    style={{marginTop:'40px'}}
+                    style={{marginTop:'30px'}}
                     label="用户名"
                     name="username"
                     rules={[

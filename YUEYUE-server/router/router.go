@@ -19,6 +19,9 @@ func SetRouter() *gin.Engine {
 	// 登录相关api
 	router.POST("/login", user.Login)
 	router.POST("/reg", user.Reg)
+
+	//token相关
+	router.POST("/validate-token", user.CheckToken)
 	return router
 }
 

@@ -1,26 +1,31 @@
 // eslint-disable-next-line no-unused-vars
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "./components/Header.jsx";
-import styles from './index.module.less'
 import {useNavigate} from "react-router-dom";
-import {getToken} from "../../utils/token.js";
+import {Skeleton} from "antd";
+import {checkToken, getToken} from "../../utils/token.js";
 
 const Home = () => {
+    const {token,username} = getToken()
     const navigate = useNavigate();
-    const token = getToken()
+    const [loading,setLoading] = useState(false)
+    const data={
+        token: token,
+        username:username
+    }
     useEffect(() => {
-        if (token === null) {
-            navigate("/login");
-        }
-    });
+        checkToken(navigate,setLoading,data)
+    },[]);
 
     return (
         <>
-            <Header/>
-            <div className={styles.a}>
-                {token+"123"}
-                <div className={styles.b}>bbb</div>
-            </div>
+            <Skeleton loading={loading}
+                      paragraph={{ rows: 20}}>
+                <Header/>
+
+                    {token+"123"}
+
+            </Skeleton>
         </>
     );
 };
