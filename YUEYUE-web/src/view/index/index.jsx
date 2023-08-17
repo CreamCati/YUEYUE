@@ -23,7 +23,7 @@ const Home = () => {
                       paragraph={{ rows: 20}}>
                 <Header/>
 
-                    {token+"123"}
+                    {`${username}的token:${token}`}
 
             </Skeleton>
         </>
